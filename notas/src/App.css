@@ -1,38 +1,130 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+}
+.backgroundExterior {
+  box-sizing: border-box;
+  position: relative;
+  width: 834px;
+  height: 1194px;
+  background: rgba(161, 240, 113, 0.94);
+  border: 1px solid
+}
+.backgroundInterior {
+  position: absolute;
+  width: 768px;
+  height: 1124px;
+  left: 33px;
+  top: 35px;
+  background: rgba(240, 209, 171, 0.94);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+img.logo {
+  position: absolute;
+  width: 394px;
+  height: 152px;
+  left: 195px;
+  top: 116px;  
+}
+p.mensaje {
+  position: absolute;
+  width: 692px;
+  height: 102px;
+  left: 46px;
+  top: 292px;
+  font-family: 'Indie Flower', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 51px;
   text-align: center;
+  color: #000000;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.libreta_feliz {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  left: 167px;
+  top: 437px;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.25));
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn_google {
+  position: absolute;
+  width: 382px;
+  height: 87px;
+  left: 206px;
+  top: 954px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.footer {
+  position: absolute;
+  width: 387px;
+  height: 27px;
+  left: 198px;
+  top: 1080px;
+  font-family: 'Source Serif Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  color: #000000;
 }
-
-.App-link {
-  color: #61dafb;
+img.exit {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 696px;
+  top: 35px;  
 }
+img.agregar_nota {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  left: 357px;
+  top: 1020px;
+}
+img.back {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  left: 25px;
+  top: 35px;
+}
+.backgroundNota {
+  position: relative;
+  width: 582px;
+  height: 503px;
+  left: 101px;
+  top: 449px;
+  background: #E92EF0;
+  border-radius: 10px;
+}
+.título {
+  position: absolute;
+  width: 467px;
+  height: 77px;
+  left: 55px;
+  top: 30px;
+  background: rgba(237, 144, 240, 0.94);
+  border-radius: 30px;
+}
+.contenido {
+  position: absolute;
+  width: 467px;
+  height: 300px;
+  left: 55px;
+  top: 130px;
+  background: rgba(237, 144, 240, 0.94);
+  border-radius: 30px;
+}
+.palomita {
+  position: absolute;
+  width: 55px;
+  height: 47.36px;
+  left: 250px;
+  top: 445px;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
