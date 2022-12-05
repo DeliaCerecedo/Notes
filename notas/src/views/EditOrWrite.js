@@ -1,10 +1,19 @@
+import { logOut } from '../firebase/auth';
+
 import React from "react";
-import exit from "../../images/exit.png";
-import back from "../../images/back.png";
-import header from "../../images/header.png";
-import palomita from "../../images/palomita.png";
+
+import exit from "../images/exit.png";
+import back from "../images/back.png";
+import header from "../images/header.png";
+import palomita from "../images/palomita.png";
+
 
 export function EditOrWrite() {
+  const buttonExit = () => {
+    logOut();
+    console.log("ya salí");
+  }
+
   return (
     <div className="backgroundExterior">
       <div className="backgroundInterior">
@@ -14,6 +23,7 @@ export function EditOrWrite() {
             className="back"
             alt="imagen de una flecha para regresar"
           />
+          <button onClick={()=>buttonExit()}>Exit</button>
           <img
             src={exit}
             className="exit"

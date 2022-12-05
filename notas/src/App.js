@@ -1,12 +1,32 @@
 // import logo from './logo.svg';
+import {collection, getDocs} from "firebase/firestore";
+import db from "./firebase/config";
+
+
+import { useEffect } from 'react';
+
 import './App.css';
-import {Login} from "./components/noauth/Login"
-import {Wall} from "./components/auth/Wall"
-import {EditOrWrite} from "./components/auth/EditOrWrite"
+import {Login} from "./views/Login"
+//  import {Wall} from "./views/Wall"
+ //import {EditOrWrite} from "./views/EditOrWrite"
+// import ContadorHooks from './components/pruebas/ContadorHooks';
+// import ScrollHooks from './components/pruebas/ContadorHooks'
+// import RelojHooks from './components/pruebas/RelojHooks';
 
 function App() {
+  useEffect(()=>{
+    const getData = async () => {
+      const saveData = await getDocs (collection, (db, "user"));
+      console.log(saveData);
+    }
+    getData();
+  },[]);
+
+  // const [user, setUser] = useState(null);
+
   return (
     <div className="App">
+
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -24,6 +44,9 @@ function App() {
       <Login/>
       {/* <Wall/> */}
       {/* <EditOrWrite/> */}
+      {/* <ContadorHooks título= "Seguidores"/> */}
+      {/* <ScrollHooks/> */}
+      {/* <RelojHooks/> */}
     </div>
   );
 }
