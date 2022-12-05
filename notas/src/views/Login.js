@@ -1,9 +1,18 @@
+import { googleAuth } from '../firebase/auth';
+
 import React from 'react';
-import header from "../../images/header.png";
-import libreta_feliz from "../../images/libreta_feliz.png";
-import btn_google from "../../images/btn_google.png";
+
+import header from "../images/header.png";
+import libreta_feliz from "../images/libreta_feliz.png";
+import btn_google from "../images/btn_google.png";
+
 
 export function Login() {
+  const buttonLogin = () => {
+    googleAuth();
+    console.log("ya quedó");
+  }
+
   return(
     <div className='backgroundExterior'>
       <div className='backgroundInterior'>
@@ -13,6 +22,7 @@ export function Login() {
         <main>
           <p  className='mensaje'>Para agregar tus notas, crea una cuenta o inicia sesión haciendo click en el botón</p>
           <img src={libreta_feliz} className="libreta_feliz" alt="libreta feliz"/>
+          <button onClick={()=>buttonLogin()}>Login with Google</button>
           <img src={btn_google} className="btn_google" alt="botón de google para iniciar sesión"/>
         </main>
         <footer>
