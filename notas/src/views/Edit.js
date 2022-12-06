@@ -1,4 +1,4 @@
-import { logOut } from '../firebase/auth';
+import { logOutFirebase } from '../firebase/auth';
 
 import React from "react";
 
@@ -8,9 +8,9 @@ import header from "../images/header.png";
 import palomita from "../images/palomita.png";
 
 
-export function EditOrWrite() {
+export function Edit() {
   const buttonExit = () => {
-    logOut();
+    logOutFirebase();
     console.log("ya salí");
   }
 
@@ -33,7 +33,7 @@ export function EditOrWrite() {
         </header>
         <main>
           <p className="mensaje">
-            Delia escribe una nota para que no la pierdas o la olvides
+            Delia EDITA TU nota para que no la pierdas o la olvides
           </p>
           <div className="backgroundNota">
             <div className="contanedorhijo">
