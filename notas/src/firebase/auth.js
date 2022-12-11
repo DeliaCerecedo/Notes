@@ -5,27 +5,12 @@ import {
   signOut,
 } from "firebase/auth";
 
-// const auth = getAuth();
-
-// const provider = new GoogleAuthProvider();
-
-// export const googleAuth = () => {
-//   signInWithPopup(auth, provider)
-//     .then((result) => {
-//         console.log("estoy logueada")
-//   })
-//     .catch((error)=>{
-//         console.log(error)
-//     })
-
-// };
-
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
 export const googleAuth = () => {
+  
   const promiseFirebase = signInWithPopup(auth, provider);
-
   return promiseFirebase
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -33,7 +18,7 @@ export const googleAuth = () => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      console.log("estoy logueada");
+    //  console.log(user.displayName, user.email);
       return user;
       // ...
     })

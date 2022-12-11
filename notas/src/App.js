@@ -8,8 +8,8 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { Login } from "./views/Login";
 import { Wall } from "./views/Wall";
-import { Write } from "./views/Write";
-import { Edit } from "./views/Edit";
+import { WriteOrEdit } from "./views/WriteOrEdit";
+// import { Edit } from "./views/Edit";
 import NotFound from "./views/NotFound";
 // import ContadorHooks from './components/pruebas/ContadorHooks';
 // import ScrollHooks from './components/pruebas/ContadorHooks'
@@ -25,6 +25,7 @@ function App() {
   }, []);
 
   const [user, setUser] = useState(null);
+  
 
   function setUserNull() {
     setUser(null);
@@ -35,8 +36,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login setUser={setUser}/>} />
         <Route path="/wall" element={user?<Wall logOut={setUserNull}/> : <Login setUser={setUser}/>}/>
-        <Route path="/write" element={<Write />} />
-        <Route path="/edit" element={<Edit />} />
+        <Route path="/write" element={<WriteOrEdit logOut={setUserNull}/>} />
+        {/* <Route path="/edit" element={<Edit logOut={setUserNull}/>} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
 

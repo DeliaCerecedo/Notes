@@ -7,7 +7,7 @@ import { Exit } from "../components/Exit";
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
 import { NotaToWritOrEdit } from "../components/NotaToWriteOrEdit";
 
-export function Edit({ logOut }) {
+export function WriteOrEdit({ logOut }) {
   const navigate = useNavigate();
 
   const buttonExit = async () => {
@@ -34,7 +34,7 @@ export function Edit({ logOut }) {
       </header>
       <main>
         <p className="mensaje">
-          Delia EDITA tu nota para que no la pierdas o la olvides
+          Delia ESCRIBE una nota para que no la pierdas o la olvides
         </p>
         <NotaToWritOrEdit buttonAddNote={() => buttonAddNote()}/>
       </main>
@@ -44,4 +44,3 @@ export function Edit({ logOut }) {
     </>
   );
 }
-

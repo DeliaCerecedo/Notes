@@ -8,13 +8,14 @@
   width: 834px;
   height: 1194px;
   background: rgba(161, 240, 113, 0.94);
-  border: 1px solid
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .backgroundInterior {
   position: absolute;
   width: 768px;
   height: 1124px;
-  left: 33px;
+  left: 34px;
   top: 35px;
   background: rgba(240, 209, 171, 0.94);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
@@ -23,17 +24,17 @@
 img.logo {
   position: absolute;
   width: 394px;
-  height: 152px;
-  left: 195px;
-  top: 116px;  
+  height: 152.91px;
+  left: 220px;
+  top: 80px;  
 }
 p.mensaje {
   position: absolute;
   width: 692px;
   height: 102px;
-  left: 46px;
+  left: 71px;
   top: 292px;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Indie Flower';
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -45,28 +46,28 @@ p.mensaje {
   position: absolute;
   width: 450px;
   height: 450px;
-  left: 167px;
+  left: 192px;
   top: 437px;
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.25));
 }
 .btn_google {
   position: absolute;
   width: 382px;
-  height: 87px;
-  left: 206px;
+  height: 92px;
+  left: 226px;
   top: 954px;
 }
 .footer {
   position: absolute;
   width: 387px;
   height: 27px;
-  left: 198px;
-  top: 1080px;
+  left: 223px;
+  top: 1112px;
   font-family: 'Source Serif Pro';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  line-height: 27px;
+  line-height: 25px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -76,28 +77,28 @@ img.exit {
   position: absolute;
   width: 60px;
   height: 60px;
-  left: 696px;
-  top: 35px;  
+  left: 721px;
+  top: 60px;  
 }
 img.agregar_nota {
   position: absolute;
   width: 70px;
   height: 70px;
-  left: 357px;
-  top: 1020px;
+  left: 382px;
+  top: 1053px;  
 }
 img.back {
   position: absolute;
   width: 55px;
   height: 55px;
-  left: 25px;
-  top: 35px;
+  left: 60px;
+  top: 60px;
 }
 .backgroundNota {
-  position: relative;
+  position: absolute;
   width: 582px;
   height: 503px;
-  left: 101px;
+  left: 126px;
   top: 449px;
   background: #E92EF0;
   border-radius: 10px;
@@ -107,7 +108,7 @@ img.back {
   width: 467px;
   height: 77px;
   left: 55px;
-  top: 30px;
+  top: 25px;
   background: rgba(237, 144, 240, 0.94);
   border-radius: 30px;
 }
@@ -116,15 +117,19 @@ img.back {
   width: 467px;
   height: 300px;
   left: 55px;
-  top: 130px;
+  top: 125px;
   background: rgba(237, 144, 240, 0.94);
   border-radius: 30px;
+}
+input::placeholder{
+  font-size: 50px;
+  color: rgba(255, 255, 255, 0.68);
+  text-align: center;
 }
 .palomita {
   position: absolute;
   width: 55px;
   height: 47.36px;
-  left: 250px;
+  left: 260px;
   top: 445px;
-
 }
