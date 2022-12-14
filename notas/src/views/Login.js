@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import libreta_feliz from "../images/libreta_feliz.png";
 import btn_google from "../images/btn_google.png";
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
+import { Footer } from "../components/Footer";
 
 export function Login({ setUser }) {
   const navigate = useNavigate();
@@ -13,8 +14,8 @@ export function Login({ setUser }) {
   // console.log(props);
 
   const buttonLogin = () => {
-    const userPromise = googleAuth();
-    userPromise
+    const userAuth = googleAuth();
+    userAuth
       .then((user) => {
         setUser(user);
        // console.log(user.displayName, user.email);
@@ -27,6 +28,8 @@ export function Login({ setUser }) {
 
     console.log("ya quedó");
   };
+
+  
 
   return (
     <>
@@ -51,8 +54,9 @@ export function Login({ setUser }) {
         />
       </main>
       <footer>
-        <p className="footer">Created by Delia Díaz for Laboratoria - 2022</p>
+        <Footer/>
       </footer>
     </>
   );
 }
+ 

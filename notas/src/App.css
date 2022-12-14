@@ -105,23 +105,32 @@ img.back {
 }
 .título {
   position: absolute;
-  width: 467px;
-  height: 77px;
+  width: 450px;
+  height: 55px;
   left: 55px;
   top: 25px;
+  padding: 2%;
+  font-size: 30px;
   background: rgba(237, 144, 240, 0.94);
-  border-radius: 30px;
+  border-radius: 10px;
 }
 .contenido {
   position: absolute;
-  width: 467px;
-  height: 300px;
+  width: 450px;
+  height: 285px;
   left: 55px;
   top: 125px;
+  padding: 2%;
+  font-size: 30px;
   background: rgba(237, 144, 240, 0.94);
   border-radius: 30px;
 }
 input::placeholder{
+  font-size: 50px;
+  color: rgba(255, 255, 255, 0.68);
+  text-align: center;
+}
+textarea::placeholder{
   font-size: 50px;
   color: rgba(255, 255, 255, 0.68);
   text-align: center;
@@ -132,4 +141,89 @@ input::placeholder{
   height: 47.36px;
   left: 260px;
   top: 445px;
+}
+h1 {
+  font-size: 150px;
+  position: absolute;
+  width: 55px;
+  height: 47.36px;
+  left: 260px;
+  top: 445px;
+}
+.containerFather {
+  display: grid;
+  position: absolute;
+  margin-top: 340px;
+  margin-left: 50px;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: flex-start;
+  justify-content: end;
+  align-items: flex-start;
+  
+  width: 700px;
+  height: 650px;
+  left: 33px;
+  top: 35px;
+  
+}
+.containerNote {
+  /* display: grid; */
+  /* grid-template-columns: repeat(3, 1fr); */
+  align-items: space-around;
+  width: 150px;
+  height: 250px;
+  /* left: 46px;
+  top: 392px; */
+  text-align: center;
+  /* justify-self: center; */
+  
+
+}
+.títuloInWall {  
+  /* position: absolute; */
+ 
+  width: 200px;
+  height: 40px;
+  font-size: large;
+  font-weight: bold;
+  /* left: 46px;
+  top: 396px; */
+  border-radius: 10px 10px 0px 0px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  
+  background: #E92EF0;
+}
+.textAreaInWall { 
+  /* position: absolute; */
+  width: 200px;
+  height: 200px;
+  font-size: medium;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+ 
+  /* left: 46px;
+  top: 451.62px; */
+
+  background: rgba(237, 144, 240, 0.94);
+} 
+
+.buttonDelete {
+  background-image: url(./images/borrar_nota.png);
+  /* position: absolute; */
+  width: 30px;
+  height: 30px;
+  
+  
+  /* left: 245px;
+  top: 641px; */
+}
+.buttonEdit {
+  background-image: url(./images/editar_nota.png);
+  /* position: absolute; */
+  width: 30px;
+  height: 30px;
+ 
+/* 
+  left: 59px;
+  top: 641px; */
 }
