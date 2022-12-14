@@ -4,9 +4,12 @@ import {
   getAuth,
   signOut,
 } from "firebase/auth";
+import { getFirestore, collection, addDoc,getDocs, doc, deleteDoc, getDoc, setDoc } from "firebase/firestore"; 
+
 
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
+
 
 export const googleAuth = () => {
   
@@ -36,3 +39,4 @@ export const googleAuth = () => {
 };
 
 export const logOutFirebase = () => signOut(auth);
+

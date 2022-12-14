@@ -1,14 +1,17 @@
 // import logo from './logo.svg';
-import { collection, getDocs } from "firebase/firestore";
+// import { collection, getDocs } from "firebase/firestore";
 import db from "./firebase/config";
 
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "./App.css";
 import { Login } from "./views/Login";
 import { Wall } from "./views/Wall";
-import { WriteOrEdit } from "./views/WriteOrEdit";
+import { Write } from "./views/Write";
 // import { Edit } from "./views/Edit";
 import NotFound from "./views/NotFound";
 // import ContadorHooks from './components/pruebas/ContadorHooks';
@@ -16,16 +19,26 @@ import NotFound from "./views/NotFound";
 // import RelojHooks from './components/pruebas/RelojHooks';
 
 function App() {
-  useEffect(() => {
-    const getData = async () => {
-      const saveData = await getDocs(collection, (db, "user"));
-      console.log(saveData);
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const saveData = await getDocs(collection, (db, "user"));
+  //     console.log(saveData);
+  //   };
+  //   getData();
+  // }, []);
 
   const [user, setUser] = useState(null);
   
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, (userAuth) => {
+    if (userAuth) {
+      setUser(userAuth)
+    } else {
+      setUser(null)
+    }
+  });
+
 
   function setUserNull() {
     setUser(null);
@@ -36,9 +49,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login setUser={setUser}/>} />
         <Route path="/wall" element={user?<Wall logOut={setUserNull}/> : <Login setUser={setUser}/>}/>
-        <Route path="/write" element={<WriteOrEdit logOut={setUserNull}/>} />
+        <Route path="/write" element={<Write logOut={setUserNull}/>} />
         {/* <Route path="/edit" element={<Edit logOut={setUserNull}/>} /> */}
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound logOut={setUserNull}/>} />
       </Routes>
 
      
