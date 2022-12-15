@@ -1,5 +1,5 @@
 // import { logOutFirebase } from "../firebase/auth";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, getDoc, doc, deleteDoc } from "firebase/firestore";
 import db from "../firebase/config";
 
 import { useState, useEffect } from "react";
@@ -9,10 +9,11 @@ import { HeaderAndBackground } from "../components/HeaderAndBackground";
 import { Exit } from "../components/Exit";
 
 import agregar_nota from "../images/agregar_nota.png";
+
 // import editar_nota from "../images/editar_nota.png";
 // import borrar_nota from "../images/borrar_nota.png";
 
-export function Wall({ logOut }) {
+export function Wall({ logOut, setUserNote }) {
   const navigate = useNavigate();
 
   const buttonAddNote = () => {
@@ -41,7 +42,33 @@ export function Wall({ logOut }) {
 
   const delateNote = async (id) => {
     await deleteDoc(doc(db, "notes", id));
+    const newNote = [...noteList.filter((item) => item.id !== id)];
+    setNoteList(newNote);
   };
+
+
+  
+
+  const [getId, setGetId] = useState(''); 
+
+  const getIdToEdit = async (id) =>{
+    console.log(getId)
+    try {
+      const docRef = doc(db, "notes", id)
+      const docSnap = await getDoc(docRef)
+      setUserNote(docSnap.data())
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    if(getId !== '') {
+      getIdToEdit(getId)
+    }
+  },[getId])
+
+
 
   return (
     <>
@@ -53,30 +80,31 @@ export function Wall({ logOut }) {
         <p className="mensaje">Delia estas son todas tus notas</p>
 
         {/* <div className="containerFather"> */}
-          <div className="containerFather">
-            {noteList.map((newNoteList) => (
-              <div className="containerNote" key={newNoteList.id}>
-                {/* <div className="títuloInWall"> */}
-                <p className="títuloInWall">{newNoteList.título}</p>
-                {/* </div> */}
-
-                <p className="textAreaInWall">{newNoteList.contenido}</p>
+        <div className="containerFather">
+          {noteList.map((newNote) => (
+            <div className="containerNote" key={newNote.id}>
+              {/* <div className="títuloInWall"> */}
+              <p className="títuloInWall">{newNote.titulo}</p>
+              {/* </div> */}
+              <div className="textAndButtons">
+                <p className="textAreaInWall">{newNote.contenido}</p>
 
                 {/* <textarea */}
-                  {/* className="textAreaInWall"
-                  value={newNoteList.contenido}
+                {/* className="textAreaInWall"
+                  value={newNote.contenido}
                   readOnly */}
                 {/* /> */}
-
-                <button className="buttonEdit"></button>
-
-                <button
-                  className="buttonDelete"
-                  onClick={() => delateNote(newNoteList.id)}
-                ></button>
+                <div className="containerbuttons">
+                  <button className="buttonEdit" onClick={()=>setGetId(newNote.id)}></button>
+                  <button
+                    className="buttonDelete"
+                    onClick={() => delateNote(newNote.id)}
+                  ></button>
+                </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
         {/* </div> */}
 
         <img

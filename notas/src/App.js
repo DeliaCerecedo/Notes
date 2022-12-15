@@ -27,7 +27,16 @@ function App() {
   //   getData();
   // }, []);
 
+  
+  const initialNote = {
+    titulo: "",
+    contenido: "",
+  };
+
   const [user, setUser] = useState(null);
+
+  const [userNote, setUserNote] = useState(initialNote);
+
   
   const auth = getAuth();
 
@@ -48,8 +57,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Login setUser={setUser}/>} />
-        <Route path="/wall" element={user?<Wall logOut={setUserNull}/> : <Login setUser={setUser}/>}/>
-        <Route path="/write" element={<Write logOut={setUserNull}/>} />
+        <Route path="/wall" element={user?<Wall logOut={setUserNull} setUserNote={setUserNote}/> : <Login setUser={setUser} />}/>
+        <Route path="/write" element={<Write logOut={setUserNull} userNote={userNote} setUserNote={setUserNote} initialNote={initialNote}/>} />
         {/* <Route path="/edit" element={<Edit logOut={setUserNull}/>} /> */}
         <Route path="*" element={<NotFound logOut={setUserNull}/>} />
       </Routes>

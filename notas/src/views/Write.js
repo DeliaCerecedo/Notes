@@ -20,15 +20,11 @@ import { NoteTemplate } from "../components/NoteTemplate";
 import { Footer } from "../components/Footer";
 // import palomita from "../images/palomita.png";
 
-export function Write({ logOut, buttonBack }) {
+export function Write({ logOut, setUserNote, userNote, initialNote }) {
   const navigate = useNavigate();
 
-  const initialNote = {
-    título: "",
-    contenido: "",
-  };
 
-  const [userNote, setUserNote] = useState(initialNote);
+  
 
   const captureInputNote = (e) => {
     console.log(e);
@@ -36,24 +32,37 @@ export function Write({ logOut, buttonBack }) {
     setUserNote({ ...userNote, [name]: value });
   };
 
+
+
+
+  
   const saveNoteInFirebase = async (e) => {
     e.preventDefault();
-    if(userNote.títle!=='' && userNote.contenido!==''){
-      try {
-        await addDoc(collection(db, "notes"), {
-          ...userNote,
-        });
-      } catch (error) {
-        console.log(error)
-      }
-      setUserNote({ ...initialNote }); //para resetear los datos ingresados en la nota y que no se quede grabado en el template
-      navigate("/wall");
+    
+    // if(getId === ''){
 
-    }else {
-      alert ("no puedes guardar notas vacías");
-    }
-    // console.log(userNote);
    
+      if(userNote.titulo!=='' && userNote.contenido!==''){
+        try {
+          await addDoc(collection(db, "notes"), {
+            ...userNote,
+          });
+        } catch (error) {
+          console.log(error)
+        }
+        setUserNote({ ...initialNote }); //para resetear los datos ingresados en la nota y que no se quede grabado en el template
+        navigate("/wall");
+
+      }else {
+        alert ("no puedes guardar notas vacías");
+      // }
+      // console.log(userNote);
+    // }else{
+    //   await setDoc(doc(db, "notes", getId), {
+    //     ...
+    //   })
+
+    }
   };
 
   return (

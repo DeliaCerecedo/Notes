@@ -167,7 +167,7 @@ h1 {
   
 }
 .containerNote {
-  /* display: grid; */
+  display: grid;
   /* grid-template-columns: repeat(3, 1fr); */
   align-items: space-around;
   width: 150px;
@@ -178,6 +178,11 @@ h1 {
   /* justify-self: center; */
   
 
+}
+.containerButtons{
+  display: flex;
+  justify-self: end;
+  
 }
 .títuloInWall {  
   /* position: absolute; */
@@ -192,6 +197,10 @@ h1 {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   
   background: #E92EF0;
+}
+.textAndButtons{
+  display: grid;
+ 
 }
 .textAreaInWall { 
   /* position: absolute; */
