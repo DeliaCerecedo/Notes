@@ -39,8 +39,11 @@ export function Wall({ logOut }) {
     getNoteList();
   }, []);
 
-  const delateNote = async (id) => {
+  const deleteNote = async (id) => {
     await deleteDoc(doc(db, "notes", id));
+    const newNoteList = [...noteList.filter((item) => item.id !== id)];
+    setNoteList(newNoteList);
+
   };
 
   return (
@@ -72,7 +75,7 @@ export function Wall({ logOut }) {
 
                 <button
                   className="buttonDelete"
-                  onClick={() => delateNote(newNoteList.id)}
+                  onClick={() => deleteNote(newNoteList.id)}
                 ></button>
               </div>
             ))}
