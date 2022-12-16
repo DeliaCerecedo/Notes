@@ -1,5 +1,5 @@
 // import { logOutFirebase } from "../firebase/auth";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc, getDoc } from "firebase/firestore";
 import db from "../firebase/config";
 
 import { useState, useEffect } from "react";
@@ -7,17 +7,22 @@ import { useNavigate } from "react-router-dom";
 
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
 import { Exit } from "../components/Exit";
+import { Edit } from "./Edit";
 
 import agregar_nota from "../images/agregar_nota.png";
 // import editar_nota from "../images/editar_nota.png";
 // import borrar_nota from "../images/borrar_nota.png";
 
-export function Wall({ logOut }) {
+export function Wall({ logOut, setUserNote }) {
   const navigate = useNavigate();
 
   const buttonAddNote = () => {
     navigate("/write");
   };
+
+  const edit = (id) => {
+    navigate("/edit/"+ id)
+  }
 
   const [noteList, setNoteList] = useState([]);
 
@@ -41,10 +46,10 @@ export function Wall({ logOut }) {
 
   const deleteNote = async (id) => {
     await deleteDoc(doc(db, "notes", id));
-    const newNoteList = [...noteList.filter((item) => item.id !== id)];
-    setNoteList(newNoteList);
-
+    const newNote = [...noteList.filter((item) => item.id !== id)];
+    setNoteList(newNote);
   };
+
 
   return (
     <>
@@ -57,25 +62,25 @@ export function Wall({ logOut }) {
 
         {/* <div className="containerFather"> */}
           <div className="containerFather">
-            {noteList.map((newNoteList) => (
-              <div className="containerNote" key={newNoteList.id}>
+            {noteList.map((newNote) => (
+              <div className="containerNote" key={newNote.id}>
                 {/* <div className="títuloInWall"> */}
-                <p className="títuloInWall">{newNoteList.título}</p>
+                <p className="títuloInWall">{newNote.titulo}</p>
                 {/* </div> */}
 
-                <p className="textAreaInWall">{newNoteList.contenido}</p>
+                <p className="textAreaInWall">{newNote.contenido}</p>
 
                 {/* <textarea */}
                   {/* className="textAreaInWall"
                   value={newNoteList.contenido}
                   readOnly */}
                 {/* /> */}
-
-                <button className="buttonEdit"></button>
-
+                {/* <Edit /> */}
+                {/* <button className="buttonEdit" onClick={() =>setNoteIdToEdit(newNote.id)} ></button> */}
+                <button className="buttonEdit" onClick={() => edit(newNote.id)}></button>
                 <button
                   className="buttonDelete"
-                  onClick={() => deleteNote(newNoteList.id)}
+                  onClick={() => deleteNote(newNote.id)}
                 ></button>
               </div>
             ))}

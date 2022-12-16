@@ -2,7 +2,7 @@ import { Back } from "../components/Back";
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
 
 
-function NotFound({ buttonBack }) {
+export function NotFound({ buttonBack }) {
   return (
     <>
       <HeaderAndBackground />
@@ -12,4 +12,3 @@ function NotFound({ buttonBack }) {
   );
 }
 
-export default NotFound;

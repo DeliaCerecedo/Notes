@@ -31,7 +31,7 @@ export function Write({ logOut, buttonBack }) {
   const [userNote, setUserNote] = useState(initialNote);
 
   const captureInputNote = (e) => {
-    console.log(e);
+   // console.log(e);
     const { name, value } = e.target;
     setUserNote({ ...userNote, [name]: value });
   };

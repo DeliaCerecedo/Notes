@@ -1,15 +1,7 @@
-// import { useNavigate } from "react-router-dom";
-
 import palomita from "../images/palomita.png";
 
 export function NoteTemplate({saveNoteInFirebase, userNote, captureInputNote}) {
-  // const navigate = useNavigate();
-
-  // const buttonAddNote = () => {
-  //   navigate("/wall");
-  // };
-
-  
+    
   return (
     <div className="backgroundNota">
       <form onSubmit={saveNoteInFirebase}>
@@ -34,7 +26,6 @@ export function NoteTemplate({saveNoteInFirebase, userNote, captureInputNote}) {
         <button>
           <img
           src={palomita}
-          // onClick={() => buttonAddNote()}
           className="palomita"
           alt="imagen  de una palomita para agregar una nota"
         />

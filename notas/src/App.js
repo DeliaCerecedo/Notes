@@ -12,11 +12,13 @@ import "./App.css";
 import { Login } from "./views/Login";
 import { Wall } from "./views/Wall";
 import { Write } from "./views/Write";
-// import { Edit } from "./views/Edit";
-import NotFound from "./views/NotFound";
+import { Edit } from "./views/Edit";
+import { NotFound } from "./views/NotFound";
 // import ContadorHooks from './components/pruebas/ContadorHooks';
 // import ScrollHooks from './components/pruebas/ContadorHooks'
 // import RelojHooks from './components/pruebas/RelojHooks';
+
+ 
 
 function App() {
   // useEffect(() => {
@@ -50,7 +52,7 @@ function App() {
         <Route path="/" element={<Login setUser={setUser}/>} />
         <Route path="/wall" element={user?<Wall logOut={setUserNull}/> : <Login setUser={setUser}/>}/>
         <Route path="/write" element={<Write logOut={setUserNull}/>} />
-        {/* <Route path="/edit" element={<Edit logOut={setUserNull}/>} /> */}
+        <Route path="/edit/:noteId" element={<Edit logOut={setUserNull}/>} />
         <Route path="*" element={<NotFound logOut={setUserNull}/>} />
       </Routes>
 
