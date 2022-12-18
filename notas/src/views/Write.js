@@ -24,21 +24,21 @@ export function Write({ logOut, buttonBack }) {
   const navigate = useNavigate();
 
   const initialNote = {
-    título: "",
+    titulo: "",
     contenido: "",
   };
 
   const [userNote, setUserNote] = useState(initialNote);
 
   const captureInputNote = (e) => {
-    console.log(e);
+   // console.log(e);
     const { name, value } = e.target;
     setUserNote({ ...userNote, [name]: value });
   };
 
   const saveNoteInFirebase = async (e) => {
     e.preventDefault();
-    if(userNote.título!=='' && userNote.contenido!==''){
+    if(userNote.titulo!=='' && userNote.contenido!==''){
       try {
         await addDoc(collection(db, "notes"), {
           ...userNote,
@@ -73,11 +73,11 @@ export function Write({ logOut, buttonBack }) {
             <input
               type="text"
               onChange={captureInputNote}
-              value={userNote.título}
-              name="título"
+              value={userNote.titulo}
+              name="titulo"
               placeholder="Título"
-              className="título"
-              id="título"
+              className="titulo"
+              id="titulo"
             /> 
             <textarea
               type="text"

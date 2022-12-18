@@ -9,8 +9,8 @@ import { HeaderAndBackground } from "../components/HeaderAndBackground";
 import { Exit } from "../components/Exit";
 
 import agregar_nota from "../images/agregar_nota.png";
-// import editar_nota from "../images/editar_nota.png";
-// import borrar_nota from "../images/borrar_nota.png";
+import editar_nota from "../images/editar_nota.png";
+import borrar_nota from "../images/borrar_nota.png";
 
 export function Wall({ logOut }) {
   const navigate = useNavigate();
@@ -45,6 +45,10 @@ export function Wall({ logOut }) {
     setNoteList(newNote);
   };
 
+  const editNote = () => {
+    navigate("/edit");
+  };
+
   return (
     <>
       <header>
@@ -56,20 +60,31 @@ export function Wall({ logOut }) {
 
         {/* <div className="containerFather"> */}
           <div className="containerFather">
-            {noteList.map((newNoteList) => (
-              <div className="containerNote" key={newNoteList.id}>
-                {/* <div className="títuloInWall"> */}
-                <p className="títuloInWall">{newNoteList.título}</p>
+            {noteList.map((newNote) => (
+              <div className="containerNote" key={newNote.id}>
+                {/* <div className="tituloInWall"> */}
+                <p className="tituloInWall">{newNote.titulo}</p>
                 {/* </div> */}
 
-                <p className="textAreaInWall">{newNoteList.contenido}</p>
+                <p className="textAreaInWall">{newNote.contenido}</p>
 
-                <button className="buttonEdit"></button>
-
-                <button
-                  className="buttonDelete"
-                  onClick={() => delateNote(newNoteList.id)}
-                ></button>
+                <button className="buttonEdit">
+                  <img
+                    src={editar_nota}
+                    onClick={() => editNote()}
+                    className="editar_nota"
+                    alt="imagen para editar una nota"
+                  />
+                </button>
+                  
+                <button  className="buttonDelete">
+                  <img
+                    src={borrar_nota}
+                    onClick={() => delateNote(newNote.id)}
+                    className="borrar_nota"
+                    alt="imagen para borrar una nota"
+                  />
+                </button>
               </div>
             ))}
           </div>
