@@ -5,21 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { Back } from "../components/Back";
 import { Exit } from "../components/Exit";
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
-import { NotaToWritOrEdit } from "../components/NotaToWriteOrEdit";
+
 
 export function Edit({ logOut }) {
   const navigate = useNavigate();
 
-  const buttonExit = async () => {
-    await logOutFirebase();
-    logOut();
-    navigate("/");
-    console.log("ya salí");
-  };
 
-  const buttonBack = () => {
-    navigate("/wall");
-  };
 
   const buttonAddNote = () => {
     navigate("/wall");
@@ -29,14 +20,14 @@ export function Edit({ logOut }) {
     <>
       <header>
         <HeaderAndBackground />
-        <Back buttonBack={() => buttonBack()} />
-        <Exit buttonExit={() => buttonExit()} />
+        <Back />
+        <Exit logOut={logOut} />
       </header>
       <main>
         <p className="mensaje">
           Delia EDITA tu nota para que no la pierdas o la olvides
         </p>
-        <NotaToWritOrEdit buttonAddNote={() => buttonAddNote()}/>
+        {/* <NotaToWritOrEdit buttonAddNote={() => buttonAddNote()}/> */}
       </main>
       <footer>
         <p className="footer">Created by Delia Díaz for Laboratoria - 2022</p>
