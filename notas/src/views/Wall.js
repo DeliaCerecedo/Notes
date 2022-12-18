@@ -41,6 +41,8 @@ export function Wall({ logOut }) {
 
   const delateNote = async (id) => {
     await deleteDoc(doc(db, "notes", id));
+    const newNote = [...noteList.filter((item) => item.id !== id)];
+    setNoteList(newNote);
   };
 
   return (
@@ -61,12 +63,6 @@ export function Wall({ logOut }) {
                 {/* </div> */}
 
                 <p className="textAreaInWall">{newNoteList.contenido}</p>
-
-                {/* <textarea */}
-                  {/* className="textAreaInWall"
-                  value={newNoteList.contenido}
-                  readOnly */}
-                {/* /> */}
 
                 <button className="buttonEdit"></button>
 

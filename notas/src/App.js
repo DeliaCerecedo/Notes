@@ -19,13 +19,6 @@ import NotFound from "./views/NotFound";
 // import RelojHooks from './components/pruebas/RelojHooks';
 
 function App() {
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const saveData = await getDocs(collection, (db, "user"));
-  //     console.log(saveData);
-  //   };
-  //   getData();
-  // }, []);
 
   const [user, setUser] = useState(null);
   

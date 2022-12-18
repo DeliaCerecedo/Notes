@@ -16,9 +16,9 @@ import { useNavigate } from "react-router-dom";
 import { Back } from "../components/Back";
 import { Exit } from "../components/Exit";
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
-import { NoteTemplate } from "../components/NoteTemplate";
+// import { NoteTemplate } from "../components/NoteTemplate";
 import { Footer } from "../components/Footer";
-// import palomita from "../images/palomita.png";
+import palomita from "../images/palomita.png";
 
 export function Write({ logOut, buttonBack }) {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ export function Write({ logOut, buttonBack }) {
 
   const saveNoteInFirebase = async (e) => {
     e.preventDefault();
-    if(userNote.títle!=='' && userNote.contenido!==''){
+    if(userNote.título!=='' && userNote.contenido!==''){
       try {
         await addDoc(collection(db, "notes"), {
           ...userNote,
@@ -67,8 +67,8 @@ export function Write({ logOut, buttonBack }) {
         <p className="mensaje">
           Delia ESCRIBE una nota para que no la pierdas o la olvides
         </p>
-        <NoteTemplate saveNoteInFirebase={saveNoteInFirebase} userNote={userNote} captureInputNote={captureInputNote}/>
-        {/* <div className="backgroundNota">
+        {/* <NoteTemplate saveNoteInFirebase={saveNoteInFirebase} userNote={userNote} captureInputNote={captureInputNote}/> */}
+        <div className="backgroundNota">
           <form onSubmit={saveNoteInFirebase}>
             <input
               type="text"
@@ -96,7 +96,7 @@ export function Write({ logOut, buttonBack }) {
               />
             </button>
           </form>
-        </div> */}
+        </div>
       </main>
       <footer>
         <Footer />
