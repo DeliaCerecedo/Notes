@@ -18,6 +18,8 @@ import { NotFound } from "./views/NotFound";
 // import ScrollHooks from './components/pruebas/ContadorHooks'
 // import RelojHooks from './components/pruebas/RelojHooks';
 
+
+
  
 
 function App() {
@@ -29,7 +31,22 @@ function App() {
   //   getData();
   // }, []);
 
+  const initialNote = {
+    titulo: "",
+    contenido: "",
+  };
+
+  const [noteList, setNoteList] = useState([]);
+  const [userNote, setUserNote] = useState(initialNote);
+
   const [user, setUser] = useState(null);
+
+  const captureInputNote = (e) => {
+    // console.log(e);
+     const { name, value } = e.target;
+     setUserNote({ ...userNote, [name]: value });
+   };
+
   
   const auth = getAuth();
 
@@ -50,9 +67,9 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Login setUser={setUser}/>} />
-        <Route path="/wall" element={user?<Wall logOut={setUserNull}/> : <Login setUser={setUser}/>}/>
-        <Route path="/write" element={<Write logOut={setUserNull}/>} />
-        <Route path="/edit/:noteId" element={<Edit logOut={setUserNull}/>} />
+        <Route path="/wall" element={user?<Wall logOut={setUserNull} noteList={noteList} setNoteList={setNoteList}/> : <Login setUser={setUser}/>}/>
+        <Route path="/write" element={<Write logOut={setUserNull} captureInputNote={captureInputNote} initialNote={initialNote}/> }/>
+        <Route path="/edit/:noteId" element={<Edit logOut={setUserNull} userNote={userNote} setUserNote={setUserNote} noteList={noteList}/>} />
         <Route path="*" element={<NotFound logOut={setUserNull}/>} />
       </Routes>
 

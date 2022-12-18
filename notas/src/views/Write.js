@@ -18,27 +18,14 @@ import { Exit } from "../components/Exit";
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
 import { NoteTemplate } from "../components/NoteTemplate";
 import { Footer } from "../components/Footer";
-// import palomita from "../images/palomita.png";
+import palomita from "../images/palomita.png";
 
-export function Write({ logOut, buttonBack }) {
+export function Write({ logOut, userNote, setUserNote, initialNote, captureInputNote }) {
   const navigate = useNavigate();
-
-  const initialNote = {
-    título: "",
-    contenido: "",
-  };
-
-  const [userNote, setUserNote] = useState(initialNote);
-
-  const captureInputNote = (e) => {
-   // console.log(e);
-    const { name, value } = e.target;
-    setUserNote({ ...userNote, [name]: value });
-  };
 
   const saveNoteInFirebase = async (e) => {
     e.preventDefault();
-    if(userNote.títle!=='' && userNote.contenido!==''){
+    if(userNote.titulo !=='' && userNote.contenido!==''){
       try {
         await addDoc(collection(db, "notes"), {
           ...userNote,
@@ -73,11 +60,11 @@ export function Write({ logOut, buttonBack }) {
             <input
               type="text"
               onChange={captureInputNote}
-              value={userNote.título}
-              name="título"
+              value={userNote.titulo}
+              name="titulo"
               placeholder="Título"
-              className="título"
-              id="título"
+              className="titulo"
+              id="titulo"
             /> 
             <textarea
               type="text"

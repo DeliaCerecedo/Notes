@@ -4,24 +4,25 @@ import db from "../firebase/config";
 
 import { useState, useEffect  } from "react";
 
+
 import { Back } from "../components/Back";
 import { Exit } from "../components/Exit";
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
 import { NoteTemplate } from "../components/NoteTemplate";
 import { useParams } from "react-router-dom";
-const initialNote = {
-  título: "",
-  contenido: "",
-};
 
-export function Edit({ logOut }) {
+
+export function Edit({ logOut, noteList, setUserNote, userNote, captureInputNote, saveNoteInFirebase }) {
  
   
-  const [userNote, setUserNote] = useState(initialNote);
+  
+  // const [userNote, setUserNote] = useState(initialNote);
 
-  const [noteIdToEdit, setNoteIdToEdit] = useState('');
+  
+
   const{noteId}=useParams();
-console.log(noteId)
+  console.log(noteId)
+  const [noteIdToEdit, setNoteIdToEdit] = useState(noteId);
   const getNoteToEdit = async (id) => {
     try {
      const docRef = doc(db, "notes", id)
@@ -34,9 +35,10 @@ console.log(noteId)
 
   useEffect(() => {
     if(noteIdToEdit !== '') {
+
       getNoteToEdit(noteIdToEdit)
     }
-  },[noteIdToEdit])
+  },[])
 
 
 
@@ -53,8 +55,11 @@ console.log(noteId)
         <p className="mensaje">
           Delia EDITA tu nota para que no la pierdas o la olvides
         </p>
-        {/* <button className="buttonEdit"></button> */}
-        {/* <button className="buttonEdit" onClick={() =>setNoteIdToEdit(newNote.id)} ></button> */}
+        
+         <NoteTemplate saveNoteInFirebase={saveNoteInFirebase} userNote={userNote} captureInputNote={captureInputNote}/>
+            
+        
+      
       </main>
       <footer>
         <p className="footer">Created by Delia Díaz for Laboratoria - 2022</p>

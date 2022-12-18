@@ -7,13 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
 import { Exit } from "../components/Exit";
-import { Edit } from "./Edit";
+
 
 import agregar_nota from "../images/agregar_nota.png";
 // import editar_nota from "../images/editar_nota.png";
 // import borrar_nota from "../images/borrar_nota.png";
 
-export function Wall({ logOut, setUserNote }) {
+export function Wall({ logOut, setUserNote, setNoteList, noteList }) {
   const navigate = useNavigate();
 
   const buttonAddNote = () => {
@@ -24,7 +24,7 @@ export function Wall({ logOut, setUserNote }) {
     navigate("/edit/"+ id)
   }
 
-  const [noteList, setNoteList] = useState([]);
+  // const [noteList, setNoteList] = useState([]);
 
   // función para renderizar la lista de notas
 
@@ -65,7 +65,7 @@ export function Wall({ logOut, setUserNote }) {
             {noteList.map((newNote) => (
               <div className="containerNote" key={newNote.id}>
                 {/* <div className="títuloInWall"> */}
-                <p className="títuloInWall">{newNote.titulo}</p>
+                <p className="tituloInWall">{newNote.titulo}</p>
                 {/* </div> */}
 
                 <p className="textAreaInWall">{newNote.contenido}</p>

@@ -1,5 +1,6 @@
 import palomita from "../images/palomita.png";
 
+
 export function NoteTemplate({saveNoteInFirebase, userNote, captureInputNote}) {
     
   return (
@@ -8,11 +9,11 @@ export function NoteTemplate({saveNoteInFirebase, userNote, captureInputNote}) {
         <input
           type="text"
           onChange={captureInputNote}
-          value={userNote.título}
-          name="título"
+          value = {userNote.titulo}
+          name="titulo"
           placeholder="Título"
-          className="título"
-          id="título"
+          className="titulo"
+          id="titulo"
         />
         <textarea
           type="text"
