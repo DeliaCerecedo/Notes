@@ -18,7 +18,11 @@ import NotFound from "./views/NotFound";
 // import ScrollHooks from './components/pruebas/ContadorHooks'
 // import RelojHooks from './components/pruebas/RelojHooks';
 
+
+
 function App() {
+
+  const [getIdToEdit, setGetIdToEdit] = useState('');
 
   const [user, setUser] = useState(null);
   
@@ -32,6 +36,19 @@ function App() {
     }
   });
 
+//  const initialNote = {
+//     titulo: "",
+//     contenido: "",
+//   }; 
+
+//   const [userNote, setUserNote] = useState(initialNote);
+
+//   const captureInputNote = (e) => {
+//    console.log(e);
+//     const { name, value } = e.target;
+//     setUserNote({ ...userNote, [name]: value });
+//   };
+
 
   function setUserNull() {
     setUser(null);
@@ -41,10 +58,10 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Login setUser={setUser}/>} />
-        <Route path="/wall" element={user?<Wall logOut={setUserNull}/> : <Login setUser={setUser}/>}/>
-        <Route path="/write" element={<Write logOut={setUserNull}/>} />
-        <Route path="/edit" element={<Edit logOut={setUserNull}/>} />
-        <Route path="*" element={<NotFound logOut={setUserNull}/>} />
+        <Route path="/wall" element={user?<Wall logOut={setUserNull}/> : <Login setUser={setUser} setGetIdToEdit={setGetIdToEdit}/>}/>
+        <Route path="/write" element={<Write logOut={setUserNull}  setGetIdToEdit={setGetIdToEdit}/>} />
+        <Route path="/edit/:id" element={<Edit logOut={setUserNull}  setGetIdToEdit={setGetIdToEdit}  getIdToEdit={getIdToEdit}/>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
      

@@ -2,11 +2,11 @@ import { Back } from "../components/Back";
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
 
 
-function NotFound({ buttonBack }) {
+function NotFound() {
   return (
     <>
       <HeaderAndBackground />
-      <Back buttonBack={()=>buttonBack()} />
+      <Back />
       <h1>¡404!</h1>
     </>
   );

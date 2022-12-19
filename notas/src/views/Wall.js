@@ -45,8 +45,12 @@ export function Wall({ logOut }) {
     setNoteList(newNote);
   };
 
-  const editNote = () => {
-    navigate("/edit");
+  const [getIdToEdit, setGetIdToEdit] = useState('');
+  
+  const editNote = (id) => {
+    console.log(id);  
+    navigate("/edit/"+id);
+
   };
 
   return (
@@ -71,7 +75,8 @@ export function Wall({ logOut }) {
                 <button className="buttonEdit">
                   <img
                     src={editar_nota}
-                    onClick={() => editNote()}
+                    onClick={() => editNote(newNote.id) }
+                    // onClick={() => editNote()}
                     className="editar_nota"
                     alt="imagen para editar una nota"
                   />
