@@ -1,5 +1,5 @@
 import { logOutFirebase } from "../firebase/auth";
-import { collection, getDocs, doc, deleteDoc, getDoc } from "firebase/firestore";
+import { collection, setDoc , doc, deleteDoc, getDoc } from "firebase/firestore";
 import db from "../firebase/config";
 
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,7 +10,7 @@ import { Exit } from "../components/Exit";
 import { HeaderAndBackground } from "../components/HeaderAndBackground";
 import palomita from "../images/palomita.png";
 
-export function Edit({ logOut, userNote, setUserNote, getIdToEdit, captureInputNote, saveNoteInFirebase }) {
+export function Edit({ logOut, userNote, setUserNote }) {
   const navigate = useNavigate();
   
   const [note, setNote] = useState({
@@ -20,27 +20,65 @@ export function Edit({ logOut, userNote, setUserNote, getIdToEdit, captureInputN
 
   const {id} = useParams();
 
-  const buttonAddNote = () => {
-    navigate("/wall");
+  const captureInputNote = (e) => {
+   // console.log(e);
+   const { name, value } = e.target;
+   setNote({ ...note, [name]: value });
   };
 
-  const getNoteToEdit = async () => {
-    console.log(id)
+ // función para guardar o actualizar datos
+ const saveNoteInFirebase = async (e) => {
+  e.preventDefault();
+  if(note.titulo!=='' && note.contenido!==''){
     try {
-     const docRef = doc(db, "notes", id)
-     const docSnap = await getDoc(docRef)
-      console.log(docSnap.data())
-     setNote(docSnap.data())
- 
+      await setDoc(doc(db, "notes", id),{
+          ...note
+        })
+      setNote({
+        titulo: "",
+        contenido: "",
+    }); //para resetear los datos ingresados en la nota y que no se quede grabado en el template
     } catch (error) {
       console.log(error)
     }
+    navigate("/wall");
+  }else {
+    alert ("no puedes guardar notas vacías");
   }
+  // console.log(userNote);
+};
 
-  // función para saber si se va a renderizar la petición para actualizar o no 
-  useEffect(() => {
-    getNoteToEdit()
-  },[])
+useEffect(() => {
+  const getNoteToEdit = () => {  //petición al servidor
+
+      const docRef = doc(db, "notes", id)
+      return getDoc(docRef)
+  }
+  getNoteToEdit().then(result => {
+      setNote(result.data())
+  })
+  }, [id])  //aquí se va a renderizar, siempre y cuando subId tenga contenio, cambios. 
+  // console.log(note)
+
+
+
+  // const getNoteToEdit = async () => {
+  //   console.log(id)
+  //   try {
+  //    const docRef = doc(db, "notes", id)
+  //    const docSnap = await getDoc(docRef)
+  //     console.log(docSnap.data())
+  //    setNote(docSnap.data())
+ 
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  // // función para saber si se va a renderizar la petición para actualizar o no 
+  // useEffect(() => {
+  //   getNoteToEdit()
+  // },[])
 
   return (
     <>
