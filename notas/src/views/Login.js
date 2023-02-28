@@ -1,5 +1,6 @@
 import { googleAuth } from "../firebase/auth";
 
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 // import header from "../images/header.png";

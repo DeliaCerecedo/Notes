@@ -4,7 +4,7 @@ import db from "./firebase/config";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
@@ -18,6 +18,7 @@ import NotFound from "./views/NotFound";
 // import ScrollHooks from './components/pruebas/ContadorHooks'
 // import RelojHooks from './components/pruebas/RelojHooks';
 
+ 
 
 
 function App() {

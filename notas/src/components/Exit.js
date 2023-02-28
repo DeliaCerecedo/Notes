@@ -1,3 +1,4 @@
+import React from "react";
 import { logOutFirebase } from "../firebase/auth";
 import { useNavigate } from "react-router-dom";
 import exit from "../images/exit.png";

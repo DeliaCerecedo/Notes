@@ -1,3 +1,4 @@
+import React from "react";
 // import { logOutFirebase } from "../firebase/auth";
 import {
   collection,

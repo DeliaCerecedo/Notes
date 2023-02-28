@@ -21,6 +21,8 @@ export function Wall({ logOut }) {
 
   const [noteList, setNoteList] = useState([]);
 
+
+  
   // función para renderizar la lista de notas
 
   useEffect(() => {

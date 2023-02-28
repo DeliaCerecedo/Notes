@@ -1,5 +1,7 @@
 // import { useNavigate } from "react-router-dom";
 
+import React from "react";
+
 import palomita from "../images/palomita.png";
 
 export function NoteTemplate({saveNoteInFirebase, userNote, captureInputNote}) {

@@ -3,7 +3,7 @@ import { collection, setDoc , doc, deleteDoc, getDoc } from "firebase/firestore"
 import db from "../firebase/config";
 
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Back } from "../components/Back";
 import { Exit } from "../components/Exit";
@@ -26,6 +26,7 @@ export function Edit({ logOut, userNote, setUserNote }) {
    setNote({ ...note, [name]: value });
   };
 
+  
  // función para guardar o actualizar datos
  const saveNoteInFirebase = async (e) => {
   e.preventDefault();
